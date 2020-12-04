@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+dody, input{
+    font-family: 'Roboto', sans-serif;
+}
+
+.container{
+   position: relative; 
+   width: 100%;
+   min-height: 100vh;
+   background-color: #ffffff;
+
+}
