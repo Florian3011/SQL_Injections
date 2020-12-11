@@ -1,22 +1,3 @@
-<?php
-
-    $servername = "sql7.freesqldatabase.com";
-    $db_username = "sql7380944";
-    $password = "9GPYVgvBXt";
-    $db_name = "sql7380944";
-
-    // Verbindung erstellen:
-    $conn = new mysqli($servername, $db_username, $password, $db_name);
-
-    // Verbindung überprüfen: 
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-    echo "Connected successfully";
-
-?>
-
-
 <!DOCTYPE html>
 
 <html lang="en">

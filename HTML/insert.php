@@ -21,7 +21,9 @@
   $sql = "INSERT INTO user (u_Name, u_PW, u_Email, u_admin)  VALUES ('$username', '$password', '$email', '$admin')";
 
   mysqli_query($conn, $sql);
-  echo "erfolgreich registriert";
+  header('Location: main.php');
+  //sleep(2);
+  //echo "erfolgreich registriert";
 ?>
 
 
