@@ -5,7 +5,7 @@
   $password = "9GPYVgvBXt";
   $db_name = "sql7380944";
 
-  // Verbindung erstellen:
+  //connect to DB:
   $conn = new mysqli($servername, $db_username, $password, $db_name);
 
       $username = $_POST['username'];
@@ -13,7 +13,7 @@
       $password = $_POST['password'];
       $admin = '0';
 
-  // Verbindung überprüfen: 
+  // check Connection: 
   if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
   }
@@ -22,6 +22,7 @@
 
   mysqli_query($conn, $sql);
   header('Location: main.php');
+  //geht das so? die;
   //sleep(2);
   //echo "erfolgreich registriert";
 ?>
