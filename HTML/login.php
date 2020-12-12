@@ -28,4 +28,7 @@
         echo "Anmeldung fehlgeschlagen";
     }
 
+    //close Connection:
+    mysqli_close($conn);
+
   ?>
