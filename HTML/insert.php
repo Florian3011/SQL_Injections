@@ -22,9 +22,9 @@
 
   mysqli_query($conn, $sql);
   header('Location: main.php');
-  //geht das so? die;
-  //sleep(2);
-  //echo "erfolgreich registriert";
+ 
+   //close Connection:
+   mysqli_close($conn);
 ?>
 
 
