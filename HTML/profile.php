@@ -14,15 +14,15 @@
     <body>
         <header>
             <div id="head"> 
-                <h1 class="title">Profile</h1>
+                <h2 class="title">Profile</h2>
             </div>
             <div id="logout">
-                <h1 class="title">Log Out</h1>
+                <h3 class="title">Log Out</h3>
             </div>
         </header>
 
         <section id="profile">
-            <h1 class="profile">Profil von dir!</h1>
+            <h3 id="profileh3">Profil von dir!</h3>
             <hr>
             <form>
                 <p>
