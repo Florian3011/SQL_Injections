@@ -1,3 +1,19 @@
+<?php   
+    $servername = "sql7.freesqldatabase.com";
+    $db_username = "sql7380944";
+    $password = "9GPYVgvBXt";
+    $db_name = "sql7380944";
+
+    //connect to DB:
+    $conn = new mysqli($servername, $db_username, $password, $db_name);
+
+    //check Conncection: 
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+?>
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -14,44 +30,30 @@
     <body>
         <header>
             <div id="head"> 
-                <h2 class="title">Profile</h2>
-            </div>
-            <div id="logout">
-                <h3 class="title">Log Out</h3>
+                <h2 class="title">Profil</h2>
             </div>
         </header>
 
-        <section id="profile">
+        <section class="profile">
             <h3 id="profileh3">Profil von dir!</h3>
             <hr>
-            <form>
+            <form id="output"> 
                 <p>
                         <label for="u_ID">Benutzer-ID: </label>
                         <br>
+                        <br>
                         <label for="u_Name">Benutzername: </label>
+                        <br>
                         <br>
                         <label for="u_PW">Passwort: </label>
                         <br>
+                        <br>
                         <label for="u_Email">E-Mail Adresse: </label>
                         <br>
+                        <br>
                         <label for="u_admin">Admin: </label>
-
                 </p>
-                
-
-            
             </form>
-
-
-
         </section>
-
-
-
-
-
-
-
     </body>
-
 </html>
