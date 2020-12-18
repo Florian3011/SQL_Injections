@@ -23,7 +23,7 @@
     $e = mysqli_fetch_array($r);
 
     if($e['u_Name'] == $username && $e['u_PW'] == $password || $e['u_Email'] == $username && $e['u_PW'] == $password){
-        echo "Anmeldung erfolgreich";
+        header('Location: profil.php');
     } else {
         echo "Anmeldung fehlgeschlagen";
     }
