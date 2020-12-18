@@ -1,18 +1,23 @@
-<?php   
-    $servername = "sql7.freesqldatabase.com";
-    $db_username = "sql7380944";
-    $password = "9GPYVgvBXt";
-    $db_name = "sql7380944";
+<?php
 
-    //connect to DB:
-    $conn = new mysqli($servername, $db_username, $password, $db_name);
+  $servername = "localhost";
+  $db_username = "root";
+  $password = "";
+  $db_name = "sql_injections";
 
-    //check Conncection: 
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
+  //connect to DB:
+  $conn = new mysqli($servername, $db_username, $password, $db_name);
 
-?>
+
+  // check Connection: 
+  if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+  }
+
+  //close Connection:
+  mysqli_close($conn);
+
+  ?>
 
 <!DOCTYPE html>
 
