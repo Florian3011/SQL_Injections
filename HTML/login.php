@@ -38,14 +38,8 @@
                         die("Connection failed: " . $conn->connect_error);
                     }
 
-                    //login via email or Username:
-                    $username = $_POST['lgn_username'];
-                    $password = $_POST['lgn_password'];
-
-                    $sql = "SELECT * FROM user where u_Name = '$username' OR u_Email = '$username' and u_PW = '$password' ";
-
+                    $sql = "SELECT * FROM user where u_Name = '" . $_POST["lgn_username"] . "' AND u_PW = '" . $_POST['lgn_password'] . "'";
                     $result = $conn->query($sql);
-                    
                     if($result == false)
                         echo $conn->error;
                     while ($result != false && $row = $result->fetch_assoc())
@@ -65,11 +59,10 @@
                         echo "Admin: " . $row["u_Admin"]; 
                         echo "<br/>";
                         echo "<br/>";
-
                     }
-
                     //close Connection:
                     mysqli_close($conn);
+
 
                     ?>
 
