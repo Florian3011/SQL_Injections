@@ -18,7 +18,7 @@
     $password = $_POST['lgn_password'];
 
     $sql = "SELECT * FROM user where u_Name = '$username' OR u_Email ='$username' and u_PW = '$password' ";
-
+    
     $r = mysqli_query($conn, $sql);
     $e = mysqli_fetch_array($r);
 
