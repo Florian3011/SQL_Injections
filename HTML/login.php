@@ -1,34 +1,80 @@
-<?php
+<!DOCTYPE html>
 
-    $servername = "localhost";
-    $db_username = "root";
-    $password = "";
-    $db_name = "sql_injections";
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script
+            src="https://kit.fontawesome.com/5281e28dd9.js"
+            crossorigin="anonymous"
+        ></script>
+        <link rel="stylesheet" href="CSS\style.css" />
+        <title>profile Form</title>
+    </head>
+    <body>
+        <header>
+            <div id="head"> 
+                <h2 class="title">Profil</h2>
+            </div>
+        </header>
 
-    //connect to DB:
-    $conn = new mysqli($servername, $db_username, $password, $db_name);
+        <section class="profile">
+            <h3 id="profileh3">Deine Profildaten!</h3>
+            <hr>
+            <form id="output"> 
+                <p>
+                <?php
 
-    //check Conncection: 
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
+                    $servername = "localhost";
+                    $db_username = "root";
+                    $password = "";
+                    $db_name = "sql_injections";
 
-    //login via email or Username:
-    $username = $_POST['lgn_username'];
-    $password = $_POST['lgn_password'];
+                    //connect to DB:
+                    $conn = new mysqli($servername, $db_username, $password, $db_name);
 
-    $sql = "SELECT * FROM user where u_Name = '$username' OR u_Email ='$username' and u_PW = '$password' ";
-    
-    $r = mysqli_query($conn, $sql);
-    $e = mysqli_fetch_array($r);
+                    //check Conncection: 
+                    if ($conn->connect_error) {
+                        die("Connection failed: " . $conn->connect_error);
+                    }
 
-    if($e['u_Name'] == $username && $e['u_PW'] == $password || $e['u_Email'] == $username && $e['u_PW'] == $password){
-        header('Location: profil.php');
-    } else {
-        echo "Anmeldung fehlgeschlagen";
-    }
+                    //login via email or Username:
+                    $username = $_POST['lgn_username'];
+                    $password = $_POST['lgn_password'];
 
-    //close Connection:
-    mysqli_close($conn);
+                    $sql = "SELECT * FROM user where u_Name = '$username' OR u_Email = '$username' and u_PW = '$password' ";
 
-  ?>
+                    $result = $conn->query($sql);
+                    
+                    if($result == false)
+                        echo $conn->error;
+                    while ($result != false && $row = $result->fetch_assoc())
+                    {
+                        echo "BenutzerID: " . $row["u_ID"]; 
+                        echo "<br/>";
+                        echo "<br/>";
+                        echo "Benutzername: " . $row["u_Name"]; 
+                        echo "<br/>";
+                        echo "<br/>";
+                        echo "Passwort: " . $row["u_PW"]; 
+                        echo "<br/>";
+                        echo "<br/>";
+                        echo "E-Mail: " . $row["u_Email"]; 
+                        echo "<br/>";
+                        echo "<br/>";
+                        echo "Admin: " . $row["u_Admin"]; 
+                        echo "<br/>";
+                        echo "<br/>";
+
+                    }
+
+                    //close Connection:
+                    mysqli_close($conn);
+
+                    ?>
+
+                </p>
+            </form>
+        </section>
+    </body>
+</html>

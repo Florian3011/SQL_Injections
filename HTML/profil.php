@@ -14,9 +14,16 @@
     die("Connection failed: " . $conn->connect_error);
   }
 
-  $sql = "SELECT * FROM user where u_Name ='" . $_POST['lgn_username'] . "' OR u_Email ='" . $_POST['lgn_username'] . "' and u_PW = '" . $_POST['lgn_password'] . "'";
+  //login via email or Username:
+  $username = $_POST['lgn_username'];
+  $password = $_POST['lgn_password'];
+
+  $sql = "SELECT * FROM user where u_Name = '$username' OR u_Email = '$username' and u_PW = '$password' ";
+
+  //$sql = "SELECT * FROM user where u_Name ='" . $_POST['lgn_username'] . "' OR u_Email ='" . $_POST['lgn_username'] . "' and u_PW = '" . $_POST['lgn_password'] . "'";
   $result = $conn->query($sql);
-  echo $sql;
+
+  echo "$sql";
   if($result == false)
     echo $conn->error;
   while ($result != false && $row = $result->fetch_assoc())
