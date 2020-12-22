@@ -18,13 +18,15 @@
             if(isset($_POST['loginBTN'])){
                
                 
-                $sql = "SELECT * FROM user where u_Name = '" . $_POST["lgn_username"] . "' AND u_PW = '" . $_POST['lgn_password'] . "'";
+                $sql = "SELECT * FROM user WHERE u_Name = '" . $_POST["lgn_username"] . "' AND u_PW = '" . $_POST['lgn_password'] . "'";
         
                     $result = mysqli_query($con, $sql);
 
                     $count = mysqli_num_rows($result);
                     if($count == 1){
-                            header("Location: profil.html");
+                            session_start();
+                            $_SESSION['username'] = $_POST["lgn_username"];
+                            header("Location: profil.php");
                     } else {
                         echo "<b> Login not possible, please check Email and password! </b>";
                     }
