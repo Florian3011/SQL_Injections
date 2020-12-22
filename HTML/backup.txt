@@ -25,6 +25,7 @@
                 <p>
                 <?php
 
+                    
                     $servername = "localhost";
                     $db_username = "root";
                     $password = "";
@@ -40,8 +41,14 @@
 
                     $sql = "SELECT * FROM user where u_Name = '" . $_POST["lgn_username"] . "' AND u_PW = '" . $_POST['lgn_password'] . "'";
                     $result = $conn->query($sql);
-                    if($result == false)
+                    if($result == false){
+                        $_SESSION["error"] = $error;
+                        header("location: main.php");
                         echo $conn->error;
+                    } else {
+
+                        
+                    }
                     while ($result != false && $row = $result->fetch_assoc())
                     {
                         echo "BenutzerID: " . $row["u_ID"]; 
