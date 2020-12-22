@@ -50,6 +50,9 @@
                         echo "<br/>";
                         echo "<br/>";
                     }
+
+                    //close Connection:
+                    mysqli_close($conn);
                
                     ?>
                 </p>
