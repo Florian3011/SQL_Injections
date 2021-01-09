@@ -16,9 +16,15 @@
             $con = mysqli_connect("localhost", "root" , "", "sql_injections");
 
             if(isset($_POST['loginBTN'])){
+
+                $username = $_POST['lgn_username'];
+                $password = $_POST['lgn_password'];
                
+                //passwort hash
+                $key = hash("sha256", $password);
+                $password = $key;
                 
-                $sql = "SELECT * FROM user WHERE u_Name = '" . $_POST["lgn_username"] . "' AND u_PW = '" . $_POST['lgn_password'] . "'";
+                $sql = "SELECT * FROM user WHERE u_Name = '$username' AND u_PW = '$password'";
         
                     $result = mysqli_query($con, $sql);
 

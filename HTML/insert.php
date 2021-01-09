@@ -18,6 +18,10 @@
     die("Connection failed: " . $conn->connect_error);
   }
 
+  //Passwort Hash
+  $key = hash("sha256", $password);
+  $password = $key;
+
   $sql = "INSERT INTO user (u_Name, u_PW, u_Email, u_admin)  VALUES ('$username', '$password', '$email', '$admin')";
 
   mysqli_query($conn, $sql);
