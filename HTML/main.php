@@ -1,22 +1,3 @@
-<?php
-
-    $servername = "sql7.freesqldatabase.com";
-    $db_username = "sql7380944";
-    $password = "9GPYVgvBXt";
-    $db_name = "sql7380944";
-
-    // Verbindung erstellen:
-    $conn = new mysqli($servername, $db_username, $password, $db_name);
-
-    // Verbindung überprüfen: 
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-    echo "Connected successfully";
-
-?>
-
-
 <!DOCTYPE html>
 
 <html lang="en">
@@ -29,22 +10,51 @@
         ></script>
         <link rel="stylesheet" href="CSS\style.css" />
         <title>Sign in & Sign up Form</title>
+
+        <?php
+
+            $con = mysqli_connect("localhost", "root" , "", "sql_injections");
+
+            if(isset($_POST['loginBTN'])){
+               
+                
+                $sql = "SELECT * FROM user WHERE u_Name = '" . $_POST["lgn_username"] . "' AND u_PW = '" . $_POST['lgn_password'] . "'";
+        
+                    $result = mysqli_query($con, $sql);
+
+                    $count = mysqli_num_rows($result);
+                    if($count == 1){
+                            session_start();
+                            $_SESSION['username'] = $_POST["lgn_username"];
+                            header("Location: profil.php");
+                    } else {
+                        echo "<b> Login not possible, please check Email and password! </b>";
+                    }
+
+            
+                
+            }
+
+
+        ?>
+
     </head>
     <body>
         <div class="container">
             <div class="forms-container">
                 <div class="signin-signup">
-                    <form action="#" class="sign-in-form">
+                    <form action="main.php" method="POST" class="sign-in-form">
                         <h2 class="title">Sign in</h2>
                         <div class="input-field">
                             <i class="fas fa-user"></i>
-                            <input type="text" placeholder="Username" />
+                            <input type="text" placeholder="Username or Email" name="lgn_username" required/>
                         </div>
                         <div class="input-field">
                             <i class="fas fa-lock"></i>
-                            <input type="password" placeholder="Password" />
+                            <input type="text" placeholder="Password" name="lgn_password" required/>
                         </div>
-                        <input type="submit" value="Login" class="btn solid" />            
+                        <input type="submit" value="Login" class="btn solid" name="loginBTN" />   
+
                     </form>
 
                     <form action="insert.php" method="POST" class="sign-up-form">
@@ -99,3 +109,4 @@
     <script src="app.js"></script>
   </body>
 </html>
+
